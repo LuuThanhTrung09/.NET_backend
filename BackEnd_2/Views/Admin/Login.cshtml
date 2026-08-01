@@ -1,0 +1,129 @@
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    .login-wrap {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #eee;
+    }
+    .login-header {
+        background: #0f0f1a;
+        padding: 36px;
+        text-align: center;
+    }
+    .login-avatar {
+        width: 56px; height: 56px;
+        border-radius: 50%;
+        background: rgba(99,88,210,0.25);
+        border: 1.5px solid rgba(99,88,210,0.5);
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 16px;
+    }
+    .login-title { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 4px; }
+    .login-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin: 0; }
+    .login-body { background: #fff; padding: 28px; }
+    .field-label {
+        font-size: 11px; font-weight: 600;
+        color: #888; display: block;
+        margin-bottom: 6px;
+        text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .field-input {
+        width: 100%; box-sizing: border-box;
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        background: #f9f9f9;
+        transition: border-color 0.2s;
+    }
+    .field-input:focus { outline: none; border-color: #7F77DD; background: #fff; }
+    .btn-login {
+        width: 100%; padding: 12px;
+        background: #534AB7; border: none;
+        border-radius: 8px; color: #fff;
+        font-size: 14px; font-weight: 600;
+        cursor: pointer; margin-bottom: 10px;
+        transition: background 0.2s;
+    }
+    .btn-login:hover { background: #6358d2; }
+    .btn-cancel {
+        width: 100%; padding: 12px;
+        background: transparent;
+        border: 1px solid #ddd;
+        border-radius: 8px; color: #888;
+        font-size: 14px; cursor: pointer;
+        transition: border-color 0.2s;
+    }
+    .btn-cancel:hover { border-color: #999; }
+    .login-footer { text-align: center; margin-top: 20px; font-size: 13px; color: #888; }
+    .login-footer a { color: #7F77DD; text-decoration: none; font-weight: 600; }
+    .alert-error {
+        background: #FCEBEB; border: 1px solid #F09595;
+        color: #A32D2D; border-radius: 8px;
+        padding: 10px 14px; font-size: 13px;
+        margin-bottom: 16px;
+    }
+</style>
+
+<div class="login-wrap">
+    <div class="login-card">
+
+        <!-- Header -->
+        <div class="login-header">
+            <div class="login-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="#a89ef5" stroke-width="2" stroke-linecap="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </div>
+            <h1 class="login-title">Đăng nhập</h1>
+            <p class="login-sub">Game106 Admin Panel</p>
+        </div>
+
+        <!-- Body -->
+        <div class="login-body">
+
+            @* Hiển thị lỗi nếu có *@
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert-error">@ViewBag.Error</div>
+            }
+
+            <form action="/admin/login" method="POST">
+                <div style="margin-bottom:16px;">
+                    <label class="field-label" for="email">Email</label>
+                    <input class="field-input" name="email" type="email"
+                           id="email" placeholder="admin@game106.com" />
+                </div>
+
+                <div style="margin-bottom:24px;">
+                    <label class="field-label" for="pwd">Mật khẩu</label>
+                    <input class="field-input" name="password" type="password"
+                           id="pwd" placeholder="••••••••" />
+                </div>
+
+                <button type="submit" class="btn-login">Đăng nhập</button>
+                <button type="button" class="btn-cancel"
+                        onclick="window.location.href='/admin'">Hủy bỏ</button>
+            </form>
+
+            <div class="login-footer">
+                Chưa có tài khoản?
+                <a href="/admin/Register">Đăng ký ngay</a>
+            </div>
+        </div>
+
+    </div>
+</div>

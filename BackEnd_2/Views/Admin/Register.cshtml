@@ -1,0 +1,233 @@
+@model Game106_API.Models.Account
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Đăng ký tài khoản Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .register-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .register-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        max-width: 480px;
+        width: 100%;
+    }
+
+    .register-header {
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        color: white;
+        padding: 35px 30px;
+        text-align: center;
+    }
+
+    .register-header h2 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 28px;
+    }
+
+    .register-header p {
+        margin: 8px 0 0;
+        opacity: 0.9;
+        font-size: 15px;
+    }
+
+    .register-body {
+        padding: 40px 35px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        border-radius: 12px;
+        padding: 14px 18px;
+        border: 2px solid #e0e0e0;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #4e54c8;
+        box-shadow: 0 0 0 4px rgba(78, 84, 200, 0.15);
+        outline: none;
+    }
+
+    .btn-register {
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 0;
+        font-size: 18px;
+        font-weight: 600;
+        width: 100%;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-register:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(78, 84, 200, 0.3);
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 15px;
+    }
+
+    .login-link a {
+        color: #4e54c8;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+
+    .alert {
+        border-radius: 12px;
+        font-size: 15px;
+    }
+
+    .password-wrapper {
+        position: relative;
+    }
+
+    .password-wrapper .form-control {
+        padding-right: 50px;
+    }
+
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #888;
+        font-size: 18px;
+        padding: 0;
+    }
+
+    .toggle-password:hover {
+        color: #4e54c8;
+    }
+</style>
+
+<div class="register-container">
+    <div class="register-card">
+
+        <!-- Header -->
+        <div class="register-header">
+            <h2><i class="fas fa-user-plus me-3"></i>Đăng ký</h2>
+            <p>Tạo tài khoản quản trị viên mới</p>
+        </div>
+
+        <!-- Body -->
+        <div class="register-body">
+
+            <!-- Thông báo lỗi -->
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle me-2"></i>@ViewBag.ErrorMessage
+                </div>
+            }
+
+            <!-- Thông báo thành công -->
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>@TempData["SuccessMessage"]
+                </div>
+            }
+
+            <form asp-action="Register" asp-controller="Admin" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-4">
+                    <label asp-for="Name" class="form-label">Họ và tên</label>
+                    <input asp-for="Name"
+                           class="form-control"
+                           placeholder="Nhập họ và tên đầy đủ"
+                           value="@Model?.Name" />
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email"
+                           type="email"
+                           class="form-control"
+                           placeholder="example@gmail.com"
+                           value="@Model?.Email" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Password" class="form-label">Mật khẩu</label>
+                    <div class="password-wrapper">
+                        <input asp-for="Password"
+                               type="password"
+                               id="passwordInput"
+                               class="form-control"
+                               placeholder="Nhập mật khẩu" />
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <i class="fas fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <button type="submit" class="btn btn-register">
+                    <i class="fas fa-user-plus me-2"></i>
+                    Tạo tài khoản
+                </button>
+            </form>
+
+            <!-- Link đăng nhập -->
+            <div class="login-link">
+                Đã có tài khoản?
+                <a asp-action="Login" asp-controller="Admin">Đăng nhập ngay</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePassword() {
+        const input = document.getElementById('passwordInput');
+        const icon = document.getElementById('eyeIcon');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+</script>

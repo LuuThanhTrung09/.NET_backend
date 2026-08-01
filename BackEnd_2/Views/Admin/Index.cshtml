@@ -1,0 +1,131 @@
+@using Game106_API.Models
+@addTagHelper*,Microsoft.AspNetCore.Mvs.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+
+    .g-header {
+        background: linear-gradient(135deg, #0f0f1a, #1a1a2e, #16213e);
+        padding: 40px 32px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+    }
+    .g-header::before {
+        content: '';
+        position: absolute;
+        top: -50%; right: -10%;
+        width: 300px; height: 300px;
+        background: radial-gradient(circle, rgba(99,88,210,0.3), transparent 70%);
+    }
+    .g-badge {
+        display: inline-block;
+        background: rgba(99,88,210,0.3);
+        border: 1px solid rgba(99,88,210,0.6);
+        color: #a89ef5;
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .g-title {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 6px;
+    }
+    .g-sub { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+    .g-section {
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 24px 0 12px;
+    }
+    .g-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .g-stat {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+    }
+    .g-stat-accent {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        border-radius: 12px 12px 0 0;
+    }
+    .g-stat-label { font-size: 12px; color: #888; margin: 8px 0 4px; text-transform: uppercase; }
+    .g-stat-val { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; }
+    .g-stat-trend { font-size: 11px; color: #1d9e75; margin-top: 4px; }
+
+    .g-menus { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .g-menu {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 20px;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        transition: border-color 0.2s;
+    }
+    .g-menu:hover { border-color: #999; }
+    .g-icon {
+        width: 40px; height: 40px;
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 12px;
+        font-size: 18px;
+    }
+    .g-menu-title { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+    .g-menu-desc { font-size: 12px; color: #888; margin: 0; }
+    .g-arrow { float: right; color: #aaa; }
+</style>
+
+<!-- Header -->
+<div class="g-header">
+    <div class="g-badge">GAME106 ADMIN</div>
+    <div class="g-title">Bảng Điều Khiển</div>
+    <p class="g-sub">Chào mừng trở lại — hệ thống đang hoạt động bình thường</p>
+</div>
+
+<!-- Menu điều hướng -->
+<p class="g-section">Quản lý</p>
+<div class="g-menus">
+    <a class="g-menu" href="/admin/ListAccount">
+        <span class="g-arrow">→</span>
+        <div class="g-icon" style="background:#EEEDFE;">👥</div>
+        <div class="g-menu-title">Danh sách Account</div>
+        <div class="g-menu-desc">Xem, sửa, xoá tài khoản người chơi</div>
+    </a>
+    <a class="g-menu" href="/admin/Login">
+        <span class="g-arrow">→</span>
+        <div class="g-icon" style="background:#E1F5EE;">🔐</div>
+        <div class="g-menu-title">Đăng nhập</div>
+        <div class="g-menu-desc">Đăng nhập vào trang quản trị</div>
+    </a>
+    <a class="g-menu" href="/admin/Register">
+        <span class="g-arrow">→</span>
+        <div class="g-icon" style="background:#FAEEDA;">📝</div>
+        <div class="g-menu-title">Đăng ký</div>
+        <div class="g-menu-desc">Tạo tài khoản admin mới</div>
+    </a>
+    <a class="g-menu" href="/admin/ListCharacter">
+        <span class="g-arrow">→</span>
+        <div class="g-icon" style="background:#FAECE7;">🎯</div>
+        <div class="g-menu-title">Nhân vật</div>
+        <div class="g-menu-desc">Quản lý character người chơi</div>
+    </a>
+</div>
