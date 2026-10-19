@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4cjzajQ7Was=",
+  "dgSpecHash": "yJj8MfYYYVQ=",
   "success": true,
-  "projectFilePath": "E:\\All Code\\BackEnd_2\\BackEnd_2.csproj",
+  "projectFilePath": "E:\\GitHub\\Code\\.NET_backend\\BackEnd_2\\BackEnd_2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Predator\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Predator\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -67,9 +67,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'MailKit' 4.15.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-9j88-vvj5-vhgr",
-      "projectPath": "E:\\All Code\\BackEnd_2\\BackEnd_2.csproj",
+      "projectPath": "E:\\GitHub\\Code\\.NET_backend\\BackEnd_2\\BackEnd_2.csproj",
       "warningLevel": 1,
-      "filePath": "E:\\All Code\\BackEnd_2\\BackEnd_2.csproj",
+      "filePath": "E:\\GitHub\\Code\\.NET_backend\\BackEnd_2\\BackEnd_2.csproj",
       "libraryId": "MailKit",
       "targetGraphs": [
         "net10.0"
@@ -79,9 +79,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.4.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "E:\\All Code\\BackEnd_2\\BackEnd_2.csproj",
+      "projectPath": "E:\\GitHub\\Code\\.NET_backend\\BackEnd_2\\BackEnd_2.csproj",
       "warningLevel": 1,
-      "filePath": "E:\\All Code\\BackEnd_2\\BackEnd_2.csproj",
+      "filePath": "E:\\GitHub\\Code\\.NET_backend\\BackEnd_2\\BackEnd_2.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"

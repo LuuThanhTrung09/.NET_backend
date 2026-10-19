@@ -21,7 +21,9 @@ public class EmailServices : IEmailServices
                 throw new ArgumentNullException(nameof(_emailSettings.From));
 
             message.From.Add(new MailboxAddress(_emailSettings.Name, _emailSettings.From));
+
             message.To.Add(new MailboxAddress(body, toEmail)); // ← dùng tên thật
+            
             message.Subject = subject;
 
             using (var sourceReader = System.IO.File.OpenText("Helpers/Template.html"))
